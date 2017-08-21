@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8" />
+            <title>Магазин для теста работы pokupo</title>
+        </head>
+        <body>
+            <script type="text/javascript">
+        WParameters = {
+            core: {
+                shopId: 3,
+//              lang: 'ru',            //используемый язык интерфейса (ru || en)
+                colorTheme: 'payment' // Варианты тем для виджета платежной системы: payment, payment_company ,payment_company_white, payment_dark
+            }
+        };
+        WParameters['standalonePayment'] = {
+            backUrl:'',              // URL страницы для возврата из виджета оплаты
+            routeName: 'default',         // Параметр определяющий роутинг для виджета. По умолчанию 'standalone_payment' (/#/standalone_payment/idGoods=6606&count=1&......). routeName = 'default' определяет инициализацию виджета в не зависимости от роутинга
+
+//***Параметры используемые при продаже услуги по цене***
+            description: 'В пользу магазина Магазин для теста работы pokupo',         //Описание услуги/товара (Обязательный параметр в случае продажи услуги)
+            amount: 100,                   //Сумма оплаты
+            group: fasle,                              //Возвращать оплату группами. По умолчанию true (необязательный параметр)
+
+//          userParams: %stPaymentUserParams%,           //произвольные пользовательские параметры, которые нужно передать продавцу в уведомлении об успешной оплате (необязательный параметр),
+//
+//          uid: %stPaymentUid%,                         //Уникальный номер учета на стороне системы продавца, не обязательный параметр, задается в коде виджета или может быть получен из внешней формы ссылки.
+//
+//          idShopPartner: %stPaymentIdShopPartner%,     //Id магазина партнера, который продает товар (необязательный параметр)
+//          mailUser: %stPaymentMailUser%,               //e-mail плательщика (необязательный параметр)
+//          idMethodPayment: %stPaymentIdMethodPayment%, //Id метода оплаты (необязательный параметр)
+
+//          groupMore: %groupMore%,                      //Группировать методы, если их больше указанного числа. По умолчанию groupMore=6 (необязательный параметр)
+
+//***Параметры используемые при продаже товара***
+//          idGoods:  %stPaymentIdGoods%,                 //Id товара в системе Pokupo (обязательный параметр в случае продажи товара)
+//          count:  %stPaymentCount%,                     //Кол-во товара для продажи, параметр может быть опущен, тогда продается 1 товар. (необязательный параметр)
+//          idShopPartner:  %stPaymentIdShopPartner%,     //Id магазина партнера, который продает товар (необязательный параметр)
+//          mailUser:  %stPaymentMailUser%,               //e-mail плательщика (необязательный параметр)
+//          idMethodPayment:  %stPaymentIdMethodPayment%  //Id метода оплаты (необязательный параметр)
+
+        };
+        (function (e) {
+            var o = e.getElementsByTagName("head")[0] || e.documentElement,
+                    a = e.createElement("script");a.async = true;a.src = "//server.pokupo.ru/prod/server/js/widgets/JSCore-1.3.min.js";o.appendChild(a);
+            a.onload = function(){
+                PokupoWidgets.Init(["standalonePayment", "statusPayment"], WParameters)
+            }
+        })(document);
+    </script>
+
+    <div class="main_pkp">
+        <div id="content_pkp"></div>
+    </div>
+</body></html>
