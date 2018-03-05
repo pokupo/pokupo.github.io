@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8" />
+            <title>Демо магазин</title>
+        </head>
+        <body>
+            <script type="text/javascript">
+        WParameters = {
+            core: {
+                shopId: 2508,
+                lang: 'en',
+                colorTheme: 'payment' // Варианты тем для виджета платежной системы: payment, payment_company ,payment_company_white, payment_dark
+            }
+        };
+        WParameters['standalonePayment'] = {
+            backUrl: 'https://pokupo.github.io/pay_token.html',
+            routeName: 'default',
+            description: 'Оплата товара токенами'
+        };
+        (function (e) {
+            var o = e.getElementsByTagName("head")[0] || e.documentElement,
+                    a = e.createElement("script");a.async = true;a.src = "//server.pokupo.ru/prod/server/js/widgets/JSCore-1.3.min.js";o.appendChild(a);
+            a.onload = function(){
+                PokupoWidgets.Init(["standalonePayment", "statusPayment"], WParameters)
+            }
+        })(document);
+    </script>
+    <div class="main_pkp">
+        <div id="content_pkp"></div>
+    </div>
+</body></html>
