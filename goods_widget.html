@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8" />
+            <title>Торговая платформа Pokupo</title>
+        </head>
+        <body>
+            <script type="text/javascript">
+        WParameters = {
+            core: {
+                shopId: 1,             // Id магазина
+//                lang: 'ru',          //Язык интерфейса ru, en. (По умолчанию ru)
+//                colorTheme: 'default'   //Цветовая тема виджета. Доступны: blue, black_yellow, brown_green, default, pink_blue, red_black, red_green. (По умолчанию default)
+            }
+        };
+        WParameters['standaloneGoods'] = {
+            show: ["blockIdGoods","blockShortName","blockFullName","blockGallery","blockShop","blockShare","blockDescription"],
+            button: 'Купить',
+            idGoods: 1743188,
+            count: 1
+        };
+        // ** Параметры для инициализации виджета **
+        //
+        // blockIdGoods - Id товара
+        // blockFullName - Полное название товара
+        // blockGallery - Фото товара и его галерея
+        // blockShop - Блок информации о магазине
+        // blockInfoSeller - Блок информации о продавце товара
+        // blockOperator - Блок информации об операторах продавца
+        // blockShortName - Краткое название товара
+        // blockCount - Блок количества товара для покупки
+        // editableCount - Разрешить/запретить изменение покупателем количества товара в корзине
+        // button - Надпись на кнопке "Купить" задается через этот параметр
+        // blockShare - Кнопки соц. сетей
+        // blockDescription - Описание товара
+        // blockShipping - Условия доставки (не выводится для цифрового товара)
+        // blockOpinion - Отзывы покупателей (не выводятся если их нет)
+        // idGoods - Id товара (этот параметр передается в виджет оплаты)
+        // count - Количество товара для покупки (этот параметр передается в виджет оплаты)
+
+        WParameters['standalonePayment'] = {
+            backUrl:'',              // URL страницы для возврата из виджета оплаты
+
+        // ** Параметры используемые при продаже товара **
+        // idShopPartner:  %stPaymentIdShopPartner%,     //Id магазина партнера, который продает товар (необязательный параметр)
+        // mailUser:  %stPaymentMailUser%,               //E-mail плательщика (необязательный параметр)
+        // idMethodPayment:  %stPaymentIdMethodPayment%  //Id метода оплаты (необязательный параметр)
+        };
+
+        // Код загрузки виджета и необходимых библиотек
+        (function(e){
+            var o=e.getElementsByTagName("head")[0]||e.documentElement,
+                    a=e.createElement("script");a.async=true;a.src="//server.pokupo.ru/prod/server/js/widgets/JSCore-1.3.min.js?v=" + Math.random().toString(36).substr(2, 10);o.appendChild(a);
+            a.onload=function(){
+                PokupoWidgets.Init(["standaloneGoods", "standalonePayment"],WParameters)
+            }
+        })(document);
+    </script>
+
+    <div class="main_pkp">
+        <section class="store nosidebar">
+            <div class="container_pkp">
+                <div id="content_pkp"></div>
+            </div>
+        </section>
+    </div>
+</body></html>
